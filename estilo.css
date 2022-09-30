@@ -1,0 +1,144 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: 0.5s;
+}
+body{
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+}
+a{
+    text-decoration:none;
+    color:black;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    min-height: 70px;
+    background-color:coral;
+    align-items: center;
+    padding: 10px;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+}
+
+.logo img{
+    border-radius: 50%;
+    height: 50px;
+    margin-right: 10px;
+}
+.portafolio{
+    font-size: 70%;
+    opacity: 0.8;
+
+}
+nav a{
+    font-weight: 600;
+    padding-right:10px ;
+}
+
+nav a:hover{
+    color:bisque;
+    
+}
+
+@media (max-width:700px){
+    header{
+        flex-direction: column;
+    }
+    nav{
+        padding:10px 0px;
+    }
+    *{
+        transition: 0.5s;
+    }
+}
+
+
+
+footer{
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    background-color: #0e0e0e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:blanchedalmond;
+    flex-direction: column;
+    padding: 2rem;
+}
+footer .logo{
+    height: 80px;
+    margin-bottom: 1rem;
+    border-radius: 50%;
+    border: 4px inset rgb(140, 140, 140);
+
+}
+
+.social-icons-container, .menu-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    text-decoration: none;
+}
+
+.social-icons{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 1px solid rgb(140, 140, 140);
+    background-image: url(resorces/facebookBlanco.png);
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    margin: 1rem;
+    filter: invert(1);
+}
+
+.social-icons:nth-of-type(2){
+    background-image:url(resorces/InstagramBlanco.png);
+}
+.social-icons:nth-of-type(3){
+    background-image:url(resorces/LinkedinBlanco.png);
+}
+.social-icons:nth-of-type(4){
+    background-image:url(resorces/WhatsappBlanco.png);
+}
+
+.social-icons:hover{
+    background-color: #121212;
+    filter: none;
+}
+
+.menu-container{
+    list-style-type: none;
+    color: #f2f2f2;
+    font-size: 18px;
+}
+
+.menu-items{
+    margin: 1rem 1.5rem;
+    cursor: pointer;
+    opacity: 0.6;
+}
+.menu-items:hover{
+    opacity:1px;
+}
+.copyright{
+    color:#f2f2f2;
+    opacity: 0.3;
+    text-align: center;
+}
