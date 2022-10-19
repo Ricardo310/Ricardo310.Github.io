@@ -47,8 +47,7 @@ nav a{
 }
 
 nav a:hover{
-    color:bisque;
-    
+    color:bisque; 
 }
 
 @media (max-width:700px){
@@ -63,11 +62,87 @@ nav a:hover{
     }
 }
 
+.card-wrap{
+    display: flex;
+    flex-flow:wrap;
+}
+.card{
+    border-radius: 8px;
+}
+.card-wrap img{
+    max-width: 100%;
+}
 
+.header-card{
+    background-color: #4d4848;
+    border-radius: 8px 8px 0 0;
+    height: 200px;
+}
+article.card{
+    max-width: 350px;
+    background-color: #878383;
+    border-radius: 8px;
+    margin: 2rem;
+    box-shadow: 0 0 12px #1f1c1c;
+}
 
-footer{
+.header-card img{
+    border-radius: 8px 8px 0 0;
+    max-height: 200px;
+    height: 200px;
     width: 100%;
-    position: absolute;
+}
+.categoria-card{
+    padding: 1rem 1rem 1rem 0rem;
+}
+.categoria-card span{
+    background-color: coral;
+    color:black;
+    padding: .2rem .5rem;
+    border-radius: 4px;
+}
+.card-footer{
+    padding: 0 1rem;
+    border-radius: 0 0 8px 8px;
+    background-color: #151515;
+    color:blanchedalmond;
+    border-top: 2px solid#516774;
+}
+.perfil-card{
+    display: flex;
+    align-items:center;
+}
+.img-perfil-card{
+    display: flex;
+}
+.img-perfil-card img{
+    width: 50px;
+    margin: 1rem 1rem 1rem 0;
+    border-radius: 50%;
+}
+.text-perfil-card{
+    display: flex;
+    flex-flow:column;
+}
+.text-perfil-card span:nth-child(2){
+    color: #516774;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.footer{
+    width: 100%;
+    position: relative;
     bottom: 0px;
     left: 0px;
     background-color: #0e0e0e;
@@ -78,7 +153,7 @@ footer{
     flex-direction: column;
     padding: 2rem;
 }
-footer .logo{
+.footer .logo{
     height: 80px;
     margin-bottom: 1rem;
     border-radius: 50%;
