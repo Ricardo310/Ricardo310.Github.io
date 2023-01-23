@@ -36,12 +36,12 @@
         else{
         var Ro = 1/(1/Rc+1/ro);
         }
-        var Fle = 1/(2*(Math.PI) *( Ro + RL) * Cc); 
+        var Flc = 1/(2*(Math.PI) *( Ro + RL) * Cc); 
         // Listo Fle //
         ////////////
         var Rsp= 1/(1/R1+1/R2+1/Rs);
         var Re = 1/(1/RE+1/(Rsp/beta+re));
-        var Flc = 1/(2*(Math.PI) * Re * CE);
+        var Fle = 1/(2*(Math.PI) * Re * CE);
         document.registro.FlsObtenido.value = Fls;
 		document.registro.FlcObtenido.value = Flc;
         document.registro.FleObtenido.value = Fle;
