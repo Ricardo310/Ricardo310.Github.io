@@ -1,0 +1,94 @@
+<html>
+<head>
+<title>EJEMPLO DE OBTENCION DE DATOS CON JAVASCRIPT</title>
+<script type="text/javascript">
+	function obtenerdatos()
+	{
+		
+
+		
+
+        var Cs= parseFloat(document.getElementById('Cs').value);
+        var CE= parseFloat(document.getElementById('CE').value) ;
+        var Cc= parseFloat(document.getElementById('Cc').value);
+        var Rs= parseFloat(document.getElementById('Rs').value);
+        var R1= parseFloat(document.getElementById('R1').value);
+        var R2= parseFloat(document.getElementById('R2').value);
+        var RE= parseFloat(document.getElementById('RE').value);
+        var Rc= parseFloat(document.getElementById('Rc').value);
+        var RL= parseFloat(document.getElementById('RL').value);
+        var beta= parseFloat(document.getElementById('beta').value);
+        var ro= parseFloat(document.getElementById('ro').value);
+        var vcc= parseFloat(document.getElementById('vcc').value); 
+        /*vb*/
+        var VB= (vcc*R2)/(R2+R1);
+        var VE= VB-0.7;
+        var IE= VE/RE;
+        var re= 0.026/IE;
+        ///////
+        var Ri= 1/(1/R1 + 1/R2 + 1/(beta*re));
+        var Fls = 1/(2*(Math.PI) * (Rs+Ri) * Cs);
+        //   ///listo Fls///
+        //////
+        if(ro==0){
+        var Ro = Rc;
+        }
+        else{
+        var Ro = 1/(1/Rc+1/ro);
+        }
+        var Fle = 1/(2*(Math.PI) *( Ro + RL) * Cc); 
+        // Listo Fle //
+        ////////////
+        var Rsp= 1/(1/R1+1/R2+1/Rs);
+        var Re = 1/(1/RE+1/(Rsp/beta+re));
+        var Flc = 1/(2*(Math.PI) * Re * CE);
+        document.registro.FlsObtenido.value = Fls;
+		document.registro.FlcObtenido.value = Flc;
+        document.registro.FleObtenido.value = Fle;
+	}
+</script>
+</head>
+<body>
+<form name="registro">
+<table border="1">
+<tr>
+	<td>Cs<input type="text" id="Cs" placeholder="Cs"></td><td>CE<input type="text" id="CE"  placeholder="CE"></td><td>Cc<input type="text" id="Cc"placeholder="Cc" ></td>
+</tr>	
+<tr>
+	<td>RS<input type="text" id="Rs" placeholder="RS"></td><td>R1<input type="text" id="R1"  placeholder="R1"></td><td>R2<input type="text" id="R2"placeholder="R2" ></td>
+</tr>
+<tr>
+	<td>RE<input type="text" id="RE" placeholder="RE"></td><td>Rc<input type="text" id="Rc"  placeholder="Rc"></td><td>RL<input type="text" id="RL"placeholder="RL" ></td>
+</tr>
+<tr>
+	<td>Beta<input type="text" id="beta" placeholder="Beta"></td><td>ro<input type="text" id="ro" value="0"  placeholder="ro"></td><td>vcc<input type="text" id="vcc"placeholder="vcc" ></td>
+</tr>
+
+
+<tr>
+	<td colspan "2"><input type="button" name="btn1" value="Enviar" onclick="obtenerdatos()"></td>
+</tr>
+</table><br/><br/><br/>
+
+
+
+
+<table border="1">
+<tr>
+	<td>Fls</td><td><input type="text" id="FlsObtenido"></td>
+</tr>	
+<tr>
+	<td>Fle</td><td><input type="text" id="FleObtenido"></td>
+</tr>	
+<tr>
+	<td>Flc</td><td><input type="text" id="FlcObtenido"></td>
+</tr>	
+</table>
+</form>
+</center>
+<P>
+    🄷🄴🄲🄷🄾 🄿🄾🅁
+🅁🄸🄲🄺.🄼
+</P>
+</body>
+</html>
