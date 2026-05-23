@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4-20mA to Voltage Scaler</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --border-color: #dcdde1;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--primary-color);
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 1rem;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            background: #f1f2f6;
+            padding: 12px;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .btn-calc {
+            width: 100%;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            margin-top: 10px;
+        }
+
+        .btn-calc:hover {
+            background-color: #2980b9;
+        }
+
+        .results-section {
+            margin-top: 30px;
+            background-color: #edf2f7;
+            padding: 20px;
+            border-radius: 6px;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .results-section h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .result-item:last-child {
+            border-bottom: none;
+        }
+
+        .result-value {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
+        }
+
+        /* Estilos específicos para recortar el logo en círculo */
+        .footer-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover; /* Evita que la imagen se estire si no es un cuadrado perfecto */
+            margin: 0 auto 10px auto;
+            display: block;
+            border: 2px solid var(--border-color);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Conversión y Escalado 4-20mA a Voltaje con Resistencia</h2>
+    
+    <!-- Entradas / Inputs -->
+    <div class="form-group">
+        <label for="spanMin">Span Mínimo del Instrumento (PT):</label>
+        <input type="number" id="spanMin" value="0" step="any">
+    </div>
+
+    <div class="form-group">
+        <label for="spanMax">Span Máximo del Instrumento (PT):</label>
+        <input type="number" id="spanMax" value="100" step="any">
+    </div>
+
+    <div class="form-group">
+        <label for="resistencia">Resistencia Utilizada (Ω):</label>
+        <input type="number" id="resistencia" value="250" step="any">
+    </div>
+
+    <div class="form-group">
+        <label>Rango de Configuración del Equipo:</label>
+        <div class="radio-group">
+            <label class="radio-option">
+                <input type="radio" name="rangoVoltaje" value="10" checked> 0 - 10 V
+            </label>
+            <label class="radio-option">
+                <input type="radio" name="rangoVoltaje" value="5"> 0 - 5 V
+            </label>
+        </div>
+    </div>
+
+    <button class="btn-calc" onclick="calcularEscalado()">Calcular</button>
+
+    <!-- Salidas / Outputs -->
+    <div class="results-section">
+        <h3>Resultados:</h3>
+        
+        <div class="result-item">
+            <span>Rampa (PSI / Voltio):</span>
+            <span class="result-value" id="outRampa">-</span>
+        </div>
+        
+        <div class="result-item">
+            <span>Voltaje a 4mA (Vmin):</span>
+            <span class="result-value" id="outV4mA">-</span>
+        </div>
+        
+        <div class="result-item">
+            <span>Voltaje a 20mA (Vmax):</span>
+            <span class="result-value" id="outV20mA">-</span>
+        </div>
+
+        <div class="result-item">
+            <span>Span Mínimo a configurar en Equipo:</span>
+            <span class="result-value" id="outSpanMinConfig">-</span>
+        </div>
+
+        <div class="result-item">
+            <span>Span Máximo a configurar en Equipo:</span>
+            <span class="result-value" id="outSpanMaxConfig">-</span>
+        </div>
+    </div>
+
+    <!-- Footer Actualizado con el Logo Circular -->
+    <footer>
+        <img src="logo.png" alt="Logo Ricardo Montero" class="footer-logo">
+        Hecho por Ricardo Montero y Andres Galban May 2026
+        <br>
+        <p>© 2026 Ricardo Montero. Código abierto bajo <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer">Licencia MIT</a></p>
+    </footer>
+</div>
+
+<script>
+function calcularEscalado() {
+    // 1. Obtener los valores de los inputs
+    const spanMin = parseFloat(document.getElementById('spanMin').value) || 0;
+    const spanMax = parseFloat(document.getElementById('spanMax').value) || 0;
+    const resistencia = parseFloat(document.getElementById('resistencia').value) || 0;
+    
+    // Obtener la selección del rango (VT = 10 o 5)
+    const vt = parseFloat(document.querySelector('input[name="rangoVoltaje"]:checked').value);
+
+    // Validar que la resistencia no sea cero para evitar división por cero
+    if (resistencia === 0) {
+        alert("La resistencia debe ser un valor mayor a 0.");
+        return;
+    }
+    
+    // 2. Cálculo solicitado: Rampa de psi sobre voltaje (m)
+    const m = (spanMax - spanMin) / (0.016 * resistencia);
+
+    // 3. Cálculos de voltajes base en la resistencia usando la ley de Ohm (V = I * R)
+    const vMin = 0.004 * resistencia;   // Voltaje mínimo generado por 4mA
+    const vMax = 0.020 * resistencia;  // Voltaje máximo generado por 20mA
+
+    if(vt < vMax){
+        alert("El valor de la resistencia es muy alta para los niveles de Voltaje que maneja el equipo!, esto puede danar el equipo!, los calculos pueden fallar!")  
+    }
+
+    // 4. Aplicación de tus fórmulas matemáticas exactas:
+    // Span Mínimo Config = m * (-Vmin) + spanMínimo
+    const spanMinConfig = m * (-vMin) + spanMin;
+    
+    // Span Máximo Config = m * (VT - Vmin) + spanMínimo
+    const spanMaxConfig = m * (vt - vMin) + spanMin;
+
+    // 5. Mostrar las salidas en el HTML con formato numérico adecuado
+    document.getElementById('outRampa').innerText = m.toFixed(4);
+    document.getElementById('outV4mA').innerText = vMin.toFixed(3) + " V";
+    document.getElementById('outV20mA').innerText = vMax.toFixed(3) + " V";
+    document.getElementById('outSpanMinConfig').innerText = spanMinConfig.toFixed(2);
+    document.getElementById('outSpanMaxConfig').innerText = spanMaxConfig.toFixed(2);
+}
+</script>
+
+</body>
+</html>
