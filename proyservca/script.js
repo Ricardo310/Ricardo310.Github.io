@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
             position: absolute;
             width: ${size}px;
             height: ${size}px;
-            background: rgba(232, 135, 43, ${Math.random() * 0.4 + 0.1});
+            background: rgba(232, 135, 43, ${Math.random() * 0.5 + 0.2});
             border-radius: 50%;
             left: ${startX}%;
             bottom: -10px;
