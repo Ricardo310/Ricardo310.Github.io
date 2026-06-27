@@ -1,0 +1,471 @@
+/* =====================================================
+   PetroServ Solutions — Products Page Styles
+   ===================================================== */
+
+/* ---------- Page Hero (Internal Pages) ---------- */
+.page-hero {
+    position: relative;
+    padding: 160px 0 80px;
+    overflow: hidden;
+    background: var(--color-bg-alt);
+}
+
+.page-hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.page-hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.12;
+    filter: grayscale(40%);
+}
+
+.page-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, var(--color-bg-alt) 0%, rgba(240, 242, 247, 0.95) 100%);
+}
+
+.page-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+}
+
+.page-hero-content h1 {
+    font-family: var(--font-primary);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    color: var(--color-text);
+    line-height: 1.15;
+    margin-bottom: 16px;
+}
+
+.page-hero-content p {
+    font-size: 1.05rem;
+    color: var(--color-text-muted);
+    line-height: 1.8;
+    max-width: 600px;
+}
+
+/* ---------- Breadcrumb ---------- */
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.breadcrumb a {
+    color: var(--color-text-muted);
+    transition: var(--transition-fast);
+}
+
+.breadcrumb a:hover {
+    color: var(--color-primary);
+}
+
+.breadcrumb svg {
+    color: var(--color-text-subtle);
+}
+
+.breadcrumb span {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+/* ---------- Catalog Section ---------- */
+.catalog-section {
+    background: var(--color-bg);
+    padding-top: 60px;
+}
+
+/* ---------- Catalog Filters ---------- */
+.catalog-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+.filter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    cursor: pointer;
+    transition: var(--transition-fast);
+    box-shadow: var(--shadow-sm);
+}
+
+.filter-btn:hover {
+    color: var(--color-primary);
+    border-color: rgba(232, 135, 43, 0.25);
+    background: rgba(232, 135, 43, 0.04);
+}
+
+.filter-btn.active {
+    color: #fff;
+    background: var(--gradient-primary);
+    border-color: transparent;
+    box-shadow: 0 4px 16px rgba(232, 135, 43, 0.25);
+}
+
+.filter-btn.active svg {
+    color: #fff;
+}
+
+/* ---------- Catalog Info ---------- */
+.catalog-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 32px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--color-text-subtle);
+}
+
+.catalog-info #productCount {
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.catalog-divider {
+    color: var(--color-border-light);
+}
+
+/* ---------- Catalog Grid ---------- */
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+/* ---------- Catalog Card ---------- */
+.catalog-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: var(--transition-base);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+}
+
+.catalog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(232, 135, 43, 0.2);
+}
+
+.catalog-card.hidden {
+    display: none;
+}
+
+/* Card Image */
+.catalog-card-image {
+    position: relative;
+    height: 240px;
+    background: var(--color-surface);
+    overflow: hidden;
+}
+
+.catalog-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-slow);
+}
+
+.catalog-card:hover .catalog-card-image img {
+    transform: scale(1.06);
+}
+
+.catalog-card-badges {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    display: flex;
+    gap: 6px;
+    z-index: 2;
+}
+
+.badge-class {
+    padding: 4px 12px;
+    background: var(--gradient-primary);
+    color: #fff;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border-radius: var(--radius-xl);
+    box-shadow: 0 2px 8px rgba(232, 135, 43, 0.3);
+}
+
+.badge-tag {
+    padding: 4px 10px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(232, 135, 43, 0.25);
+    color: var(--color-primary-dark);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border-radius: var(--radius-xl);
+    backdrop-filter: blur(8px);
+}
+
+/* Card Hover Overlay */
+.catalog-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(26, 29, 43, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: var(--transition-base);
+    z-index: 1;
+}
+
+.catalog-card:hover .catalog-card-overlay {
+    opacity: 1;
+}
+
+.overlay-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    background: var(--gradient-primary);
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: var(--radius-xl);
+    box-shadow: 0 4px 20px rgba(232, 135, 43, 0.4);
+    transform: translateY(10px);
+    transition: var(--transition-base);
+}
+
+.catalog-card:hover .overlay-btn {
+    transform: translateY(0);
+}
+
+.overlay-btn:hover {
+    box-shadow: 0 6px 28px rgba(232, 135, 43, 0.5);
+}
+
+/* Card Body */
+.catalog-card-body {
+    flex: 1;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.catalog-card-cat {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+}
+
+.catalog-card-body h3 {
+    font-family: var(--font-primary);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
+
+.catalog-card-body > p {
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+    line-height: 1.65;
+    margin-bottom: 16px;
+}
+
+/* Card Specs */
+.catalog-card-specs {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 20px;
+    padding: 14px;
+    background: var(--color-surface);
+    border-radius: var(--radius-sm);
+}
+
+.catalog-spec {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+}
+
+.catalog-spec strong {
+    color: var(--color-text);
+    font-weight: 600;
+}
+
+/* Card Footer */
+.catalog-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid var(--color-border);
+}
+
+.catalog-material {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--color-text-subtle);
+    padding: 4px 10px;
+    background: var(--color-surface);
+    border-radius: var(--radius-sm);
+}
+
+.catalog-cta-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    transition: var(--transition-fast);
+}
+
+.catalog-cta-link:hover {
+    color: var(--color-primary-dark);
+    gap: 10px;
+}
+
+/* ---------- Catalog CTA Section ---------- */
+.catalog-cta-section {
+    margin-top: 64px;
+    padding: 48px;
+    background: var(--gradient-card);
+    border: 1px solid rgba(232, 135, 43, 0.15);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.catalog-cta-content h2 {
+    font-family: var(--font-primary);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 8px;
+}
+
+.catalog-cta-content p {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    max-width: 500px;
+}
+
+.catalog-cta-actions {
+    display: flex;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1024px) {
+    .catalog-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .catalog-cta-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 36px;
+    }
+
+    .catalog-cta-content p {
+        max-width: none;
+    }
+
+    .catalog-cta-actions {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-hero {
+        padding: 120px 0 60px;
+    }
+
+    .page-hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .catalog-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .catalog-filters {
+        flex-direction: column;
+    }
+
+    .filter-btn {
+        justify-content: center;
+    }
+
+    .catalog-cta-section {
+        padding: 28px;
+    }
+
+    .catalog-cta-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .catalog-cta-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-hero {
+        padding: 100px 0 48px;
+    }
+
+    .catalog-card-image {
+        height: 200px;
+    }
+
+    .catalog-card-body {
+        padding: 20px;
+    }
+
+    .catalog-card-footer {
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+    }
+}
